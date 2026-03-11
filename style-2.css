@@ -26,13 +26,16 @@ body {
 header,
 footer,
 main {
-    max-width: 780px;
+    max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
 }
 
 main {
     display: block;
+    columns: 2;
+    column-gap: 2rem;
+    column-rule: 1px solid rgba(122, 90, 54, 0.35);
 }
 
 header {
@@ -72,6 +75,7 @@ h1 {
 article {
     padding: 1rem 0;
     border-bottom: 1px solid rgba(122, 90, 54, 0.45);
+    break-inside: avoid;
 }
 
 h2 {
@@ -105,7 +109,8 @@ p:first-of-type::first-letter {
     border: 2px solid var(--rule);
     padding: 0.2rem;
     background: #efe2c8;
-    filter: sepia(0.32) contrast(1.06);
+    filter: sepia(0.35) saturate(0.65) contrast(1.1) brightness(0.92);
+    mix-blend-mode: multiply;
 }
 
 /* Works with current HTML: all main article images float left in longread flow. */
@@ -204,7 +209,7 @@ dd::after,
 /* CSS-only reorder for Jupiter: heading and moons sit below the Jupiter image row. */
 .planet-jupiter {
     display: grid;
-    grid-template-columns: minmax(150px, 42%) 1fr;
+    grid-template-columns: minmax(120px, 38%) 1fr;
     column-gap: 0.9rem;
     align-items: start;
 }
@@ -235,6 +240,11 @@ dd::after,
 @media (max-width: 760px) {
     body {
         padding: 0.8rem;
+    }
+
+    main {
+        columns: 1;
+        column-rule: none;
     }
 
     main > article > .planet-image,
