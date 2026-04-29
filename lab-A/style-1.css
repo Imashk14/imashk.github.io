@@ -1,3 +1,460 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Space+Grotesk:wght@500;700&display=swap');
+
+html,
 body {
-  background-color: #dfecff;
+    min-height: 100%;
+}
+
+body {
+    background-color: black;
+    color: whitesmoke;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 1rem;
+    min-height: 100vh;
+    position: relative;
+    isolation: isolate;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.72)),
+        url("https://imashk14.github.io/imashk.github.io/assets/bg-landscape-1280x834.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+@media (min-width: 900px) {
+    body::before {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.72)),
+            url("https://imashk14.github.io/imashk.github.io/assets/bg-landscape-1920x1252.jpg");
+    }
+}
+
+@media (min-width: 1800px) {
+    body::before {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.74)),
+            url("https://imashk14.github.io/imashk.github.io/assets/bg-landscape-4600x3000.jpg");
+    }
+}
+
+@media (orientation: portrait) {
+    body::before {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.72)),
+            url("https://imashk14.github.io/imashk.github.io/assets/bg-portrait-899x1280.jpg");
+        background-position: center top;
+    }
+}
+
+@media (orientation: portrait) and (min-width: 700px) {
+    body::before {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.72)),
+            url("https://imashk14.github.io/imashk.github.io/assets/bg-portrait-1349-1920.jpg");
+    }
+}
+
+@media (orientation: portrait) and (min-width: 900px) and (min-resolution: 2dppx) {
+    body::before {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.78)),
+            url("https://imashk14.github.io/imashk.github.io/assets/bg-landscape-4600x3000.jpg");
+    }
+}
+h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 0.5em;
+}
+
+/* Glassmorphism card style */
+article {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+}
+
+/* Keep layout/image mode switch aligned at one breakpoint. */
+@media (max-width: 899px) {
+    article {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .jupiter-moons {
+        grid-template-columns: 1fr;
+    }
+}
+
+article:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Header glass effect */
+header {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Footer glass effect */
+footer {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1rem 2rem;
+    text-align: center;
+    margin-top: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Layout */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header, footer {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== Desktop Vertical Timeline Layout ===== */
+@media (min-width: 900px) {
+    main {
+        max-width: 1100px;
+        position: relative;
+        display: block;
+        padding: 2rem 0;
+    }
+
+    /* The vertical center line */
+    main::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3px;
+        background: linear-gradient(180deg,
+            rgba(255,180,0,0.6),
+            rgba(180,180,190,0.5),
+            rgba(230,200,120,0.5),
+            rgba(30,100,200,0.5),
+            rgba(200,60,20,0.5),
+            rgba(200,150,80,0.5),
+            rgba(220,190,100,0.5),
+            rgba(80,200,220,0.5),
+            rgba(40,60,200,0.6)
+        );
+        z-index: 1;
+        border-radius: 2px;
+        box-shadow: 0 0 12px rgba(255,255,255,0.1);
+    }
+
+    /* All articles: positioned relative to the center line */
+    main > article {
+        position: relative;
+        box-sizing: border-box;
+        width: calc(50% - 40px);
+        margin-bottom: 2rem;
+        z-index: 2;
+    }
+
+    /* Odd articles (1,3,5,7,9) go on the LEFT */
+    main > article:nth-child(odd) {
+        margin-left: 0;
+        margin-right: auto;
+        text-align: right;
+    }
+
+    /* Even articles (2,4,6,8) go on the RIGHT */
+    main > article:nth-child(even) {
+        margin-left: calc(50% + 40px);
+        text-align: left;
+    }
+
+    /* Horizontal connector line from article to center line */
+    main > article::before {
+        content: '';
+        position: absolute;
+        top: 2rem;
+        height: 2px;
+        width: 41px;
+        z-index: 2;
+    }
+
+    /* Odd: connector goes RIGHT from article to center */
+    main > article:nth-child(odd)::before {
+        left: calc(100% + 1px);
+    }
+
+    /* Even: connector goes LEFT from article to center */
+    main > article:nth-child(even)::before {
+        right: calc(100% + 1px);
+    }
+
+    /* Dot on the center timeline */
+    main > article::after {
+        content: '';
+        position: absolute;
+        top: calc(2rem - 10px);
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        z-index: 3;
+        border: 2px solid rgba(255,255,255,0.3);
+        box-shadow: 0 0 12px currentColor;
+    }
+
+    /* Odd: dot sits at the center line */
+    main > article:nth-child(odd)::after {
+        left: calc(100% + 1px + 41px - 11px);
+    }
+
+    /* Even: dot sits at the center line */
+    main > article:nth-child(even)::after {
+        right: calc(100% + 1px + 41px - 11px);
+    }
+
+    /* ---- Per-planet connector & dot colors ---- */
+    main > article.planet-sun::before { background: rgba(255,180,0,0.7); }
+    main > article.planet-sun::after { background: rgba(255,180,0,0.9); color: rgba(255,180,0,0.9); }
+
+    main > article.planet-mercury::before { background: rgba(180,180,190,0.7); }
+    main > article.planet-mercury::after { background: rgba(180,180,190,0.9); color: rgba(180,180,190,0.9); }
+
+    main > article.planet-venus::before { background: rgba(230,200,120,0.7); }
+    main > article.planet-venus::after { background: rgba(230,200,120,0.9); color: rgba(230,200,120,0.9); }
+
+    main > article.planet-earth::before { background: rgba(30,100,200,0.7); }
+    main > article.planet-earth::after { background: rgba(30,100,200,0.9); color: rgba(30,100,200,0.9); }
+
+    main > article.planet-mars::before { background: rgba(200,60,20,0.7); }
+    main > article.planet-mars::after { background: rgba(200,60,20,0.9); color: rgba(200,60,20,0.9); }
+
+    main > article.planet-jupiter::before { background: rgba(200,150,80,0.7); }
+    main > article.planet-jupiter::after { background: rgba(200,150,80,0.9); color: rgba(200,150,80,0.9); }
+
+    main > article.planet-saturn::before { background: rgba(220,190,100,0.7); }
+    main > article.planet-saturn::after { background: rgba(220,190,100,0.9); color: rgba(220,190,100,0.9); }
+
+    main > article.planet-uranus::before { background: rgba(80,200,220,0.7); }
+    main > article.planet-uranus::after { background: rgba(80,200,220,0.9); color: rgba(80,200,220,0.9); }
+
+    main > article.planet-neptune::before { background: rgba(40,60,200,0.7); }
+    main > article.planet-neptune::after { background: rgba(40,60,200,0.9); color: rgba(40,60,200,0.9); }
+
+    /* Timeline-safe hover: slight upward lift */
+    article:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.2),
+                    0 0 60px rgba(255, 255, 255, 0.08),
+                    0 12px 40px rgba(0, 0, 0, 0.5),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+        z-index: 10;
+    }
+
+    /* Header/footer full width */
+    header, footer {
+        max-width: 1100px;
+    }
+}
+
+/* Images */
+.planet-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    display: block;
+    margin: 0 auto;
+}
+
+.moon-image {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    display: block;
+    margin: 0 auto;
+}
+
+/* Definition list glassmorphism */
+dl {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.jupiter-moons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.jupiter-moons .moon-entry {
+    min-width: 0;
+}
+
+.jupiter-moons dd {
+    margin-bottom: 0;
+}
+
+dt {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+dd {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-left: 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Paragraph spacing */
+p {
+    line-height: 1.7;
+}
+
+/* ===== Per-planet glassmorphism gradients ===== */
+
+/* Sun — fiery yellow / orange */
+.planet-sun {
+    background: radial-gradient(ellipse at 20% 30%, rgba(255, 180, 0, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(255, 100, 0, 0.2) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 180, 50, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 200, 50, 0.15),
+    0 0 80px rgba(255, 160, 0, 0.12);
+}
+
+/* Mercury — grey / silver */
+.planet-mercury {
+    background: radial-gradient(ellipse at 30% 40%, rgba(180, 180, 190, 0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 60%, rgba(140, 140, 155, 0.18) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.07);
+    border-color: rgba(180, 180, 195, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(200, 200, 210, 0.15),
+    0 0 80px rgba(180, 180, 200, 0.1);
+}
+
+/* Venus — pale yellow / cream */
+.planet-venus {
+    background: radial-gradient(ellipse at 25% 35%, rgba(230, 200, 120, 0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 75% 65%, rgba(200, 170, 80, 0.18) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.07);
+    border-color: rgba(230, 200, 120, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(230, 210, 140, 0.15),
+    0 0 80px rgba(220, 190, 100, 0.1);
+}
+
+/* Earth — blue / green */
+.planet-earth {
+    background: radial-gradient(ellipse at 20% 30%, rgba(30, 100, 200, 0.28) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(40, 160, 80, 0.2) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.07);
+    border-color: rgba(60, 130, 200, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(80, 160, 220, 0.15),
+    0 0 80px rgba(40, 120, 200, 0.1);
+}
+
+/* Mars — red / rust / orange */
+.planet-mars {
+    background: radial-gradient(ellipse at 25% 35%, rgba(200, 60, 20, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 75% 65%, rgba(180, 100, 40, 0.2) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.07);
+    border-color: rgba(200, 80, 40, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(220, 100, 50, 0.15),
+    0 0 80px rgba(200, 60, 20, 0.12);
+}
+
+/* Jupiter — tan / orange / brown bands */
+.planet-jupiter {
+    background: radial-gradient(ellipse at 20% 30%, rgba(200, 150, 80, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(180, 100, 50, 0.2) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, rgba(220, 180, 120, 0.12) 0%, transparent 70%),
+    rgba(255, 255, 255, 0.07);
+    border-color: rgba(210, 160, 90, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(220, 170, 100, 0.15),
+    0 0 80px rgba(200, 140, 60, 0.1);
+}
+
+/* Saturn — gold / pale yellow */
+.planet-saturn {
+    background: radial-gradient(ellipse at 25% 35%, rgba(220, 190, 100, 0.28) 0%, transparent 60%),
+    radial-gradient(ellipse at 75% 65%, rgba(200, 160, 70, 0.2) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.07);
+    border-color: rgba(220, 190, 110, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(230, 200, 120, 0.15),
+    0 0 80px rgba(210, 180, 90, 0.1);
+}
+
+/* Uranus — pale cyan / ice blue */
+.planet-uranus {
+    background: radial-gradient(ellipse at 20% 30%, rgba(80, 200, 220, 0.28) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(100, 180, 200, 0.2) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.07);
+    border-color: rgba(100, 200, 220, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(120, 210, 230, 0.15),
+    0 0 80px rgba(80, 190, 220, 0.1);
+}
+
+/* Neptune — deep blue / indigo */
+.planet-neptune {
+    background: radial-gradient(ellipse at 20% 30%, rgba(40, 60, 200, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(60, 80, 180, 0.2) 0%, transparent 60%),
+    rgba(255, 255, 255, 0.07);
+    border-color: rgba(60, 80, 200, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(80, 100, 220, 0.15),
+    0 0 80px rgba(50, 70, 200, 0.12);
 }

@@ -1,3 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    --paper: #e6d7bb;
+    --paper-shadow: #cfbc97;
+    --ink: #23190f;
+    --ink-soft: #4e3c29;
+    --rule: #7a5a36;
+    --accent: #5f4326;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-  background-color: #ecfbe6;
+    margin: 0;
+    padding: 1.25rem;
+    color: var(--ink);
+    font-family: 'EB Garamond', serif;
+    line-height: 1.65;
+    background: radial-gradient(circle at 10% 0%, rgba(255, 248, 232, 0.5), transparent 42%),
+    linear-gradient(180deg, var(--paper), var(--paper-shadow));
+}
+
+header,
+footer,
+main {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main {
+    display: block;
+    columns: 2;
+    column-gap: 2rem;
+    column-rule: 1px solid rgba(122, 90, 54, 0.35);
+}
+
+header {
+    text-align: center;
+    padding: 0.8rem 0;
+    margin-bottom: 1rem;
+    border-top: 3px double var(--rule);
+    border-bottom: 3px double var(--rule);
+}
+
+footer {
+    text-align: center;
+    margin-top: 1.2rem;
+    padding: 0.6rem 0;
+    border-top: 1px solid rgba(122, 90, 54, 0.7);
+    color: var(--ink-soft);
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Cinzel', serif;
+    color: #322211;
+    letter-spacing: 0.035em;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(1.9rem, 3vw, 2.9rem);
+    text-transform: uppercase;
+}
+
+.planet-grid {
+    display: block;
+}
+
+article {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(122, 90, 54, 0.45);
+    break-inside: avoid;
+}
+
+h2 {
+    margin: 0 0 0.55rem;
+    font-size: 1.35rem;
+    text-transform: uppercase;
+}
+
+h3 {
+    margin: 0.8rem 0 0.4rem;
+    font-size: 1.05rem;
+}
+
+p {
+    margin: 0.5rem 0;
+    text-align: justify;
+}
+
+p:first-of-type::first-letter {
+    float: left;
+    font-family: 'Cinzel', serif;
+    font-size: 2.3em;
+    line-height: 0.9;
+    margin: 0.07em 0.16em 0 0;
+    color: var(--accent);
+}
+
+.planet-image,
+.moon-image {
+    width: 100%;
+    border: 2px solid var(--rule);
+    padding: 0.2rem;
+    background: #efe2c8;
+    filter: sepia(0.35) saturate(0.65) contrast(1.1) brightness(0.92);
+    mix-blend-mode: multiply;
+}
+
+/* Works with current HTML: all main article images float left in longread flow. */
+main > article > .planet-image {
+    float: left;
+    width: min(42%, 250px);
+    margin: 0.1rem 0.9rem 0.65rem 0;
+    display: block;
+}
+
+/* Keep longread direction consistent: all planet images stay on the left. */
+.planet-grid > article:nth-child(even) .planet-image {
+    float: left;
+    margin: 0.1rem 0.9rem 0.65rem 0;
+}
+
+.moon-image {
+    float: left;
+    width: min(42%, 170px);
+    margin: 0.05rem 0.75rem 0.55rem 0;
+}
+
+dl {
+    margin: 0.35rem 0 0;
+    padding: 0;
+}
+
+.jupiter-moons {
+    display: block;
+}
+
+.moon-entry {
+    border: 0;
+    border-top: 1px dashed rgba(122, 90, 54, 0.45);
+    padding: 0.55rem 0 0.15rem;
+    background: transparent;
+    min-width: 0;
+}
+
+dt {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    margin: 0 0 0.28rem;
+}
+
+dd {
+    margin: 0;
+    padding: 0;
+}
+
+article::after,
+dd::after,
+.moon-entry::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* Planet-specific accents are subtle headline markers in the print theme. */
+.planet-sun h2 {
+    color: #6e4517;
+}
+
+.planet-mercury h2 {
+    color: #544739;
+}
+
+.planet-venus h2 {
+    color: #7a5d2f;
+}
+
+.planet-earth h2 {
+    color: #36564a;
+}
+
+.planet-mars h2 {
+    color: #7a351f;
+}
+
+.planet-jupiter h2 {
+    color: #6b4529;
+}
+
+.planet-saturn h2 {
+    color: #786233;
+}
+
+.planet-uranus h2 {
+    color: #3f6267;
+}
+
+.planet-neptune h2 {
+    color: #304e72;
+}
+
+/* CSS-only reorder for Jupiter: heading and moons sit below the Jupiter image row. */
+.planet-jupiter {
+    display: grid;
+    grid-template-columns: minmax(120px, 38%) 1fr;
+    column-gap: 0.9rem;
+    align-items: start;
+}
+
+.planet-jupiter > h2 {
+    grid-column: 1 / -1;
+}
+
+.planet-jupiter > .planet-image {
+    grid-column: 1;
+    grid-row: 2;
+    float: none;
+    width: 100%;
+    margin: 0.1rem 0 0.65rem 0;
+}
+
+.planet-jupiter > p:first-of-type {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 0.1rem;
+}
+
+.planet-jupiter > h3,
+.planet-jupiter > .jupiter-moons {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 760px) {
+    body {
+        padding: 0.8rem;
+    }
+
+    main {
+        columns: 1;
+        column-rule: none;
+    }
+
+    main > article > .planet-image,
+    .moon-image {
+        float: none;
+        display: block;
+        width: 100%;
+        max-width: min(100%, 380px);
+        margin: 0.2rem auto 0.7rem;
+    }
+
+    .planet-jupiter {
+        display: block;
+    }
+
+    .planet-jupiter > .planet-image {
+        float: none;
+        width: 100%;
+        max-width: min(100%, 380px);
+        margin: 0.2rem auto 0.7rem;
+    }
+
+    .jupiter-moons {
+        display: block;
+    }
 }

@@ -1,0 +1,151 @@
+:root {
+    /** Theme primary colors */
+    --clr-primary-a0: #8446eb;
+    --clr-primary-a10: #8e5def;
+    --clr-primary-a20: #9971f2;
+    --clr-primary-a30: #a584f5;
+    --clr-primary-a40: #b197f8;
+    --clr-primary-a50: #bda8fa;
+
+    /** Theme surface colors */
+    --clr-surface-a0: #121212;
+    --clr-surface-a10: #252525;
+    --clr-surface-a20: #393939;
+    --clr-surface-a30: #4f4f4f;
+    --clr-surface-a40: #666;
+    --clr-surface-a50: #7d7d7d;
+
+    /** Theme tonal surface colors */
+    --clr-surface-tonal-a0: #1b1924;
+    --clr-surface-tonal-a10: #2e2c37;
+    --clr-surface-tonal-a20: #42404a;
+    --clr-surface-tonal-a30: #57555e;
+    --clr-surface-tonal-a40: #6c6b74;
+    --clr-surface-tonal-a50: #838289;
+
+    /** Success colors */
+    --clr-success-a0: #22946e;
+    --clr-success-a10: #5ba989;
+    --clr-success-a20: #86bfa6;
+
+    /** Warning colors */
+    --clr-warning-a0: #a87a2a;
+    --clr-warning-a10: #ba945a;
+    --clr-warning-a20: #cbae84;
+
+    /** Danger colors */
+    --clr-danger-a0: #9c2121;
+    --clr-danger-a10: #b4544c;
+    --clr-danger-a20: #ca7f77;
+
+    /** Info colors */
+    --clr-info-a0: #21498a;
+    --clr-info-a10: #4b6ca2;
+    --clr-info-a20: #7590ba;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, var(--clr-surface-tonal-a0) 0%, var(--clr-surface-a0) 100%);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--clr-primary-a20) 0%, var(--clr-primary-a40) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--clr-primary-a20);
+}
+
+nav {
+    padding: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    max-width: 400px;
+    width: 100%;
+}
+
+nav li {
+    width: 100%;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 3rem;
+    background: rgba(132, 70, 235, 0.1);
+    border: 2px solid var(--clr-primary-a20);
+    border-radius: 12px;
+    color: var(--clr-primary-a10);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 100%;
+}
+
+nav a:hover {
+    background: var(--clr-primary-a20);
+    color: var(--clr-surface-a0);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(132, 70, 235, 0.3);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+}
+
+header {
+    background: rgba(30, 24, 38, 0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(132, 70, 235, 0.2);
+    padding: 3rem 2rem;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+p {
+    color: var(--clr-surface-a50);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
