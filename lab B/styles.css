@@ -1,0 +1,277 @@
+:root {
+  /** Base colors */
+  --clr-dark-a0: #000000;
+  --clr-light-a0: #ffffff;
+
+  /** Theme primary colors */
+  --clr-primary-a0: #08e01f;
+  --clr-primary-a10: #4de444;
+  --clr-primary-a20: #6de85f;
+  --clr-primary-a30: #88ec78;
+  --clr-primary-a40: #9ef08f;
+  --clr-primary-a50: #b4f4a6;
+
+  /** Theme surface colors */
+  --clr-surface-a0: #121212;
+  --clr-surface-a10: #282828;
+  --clr-surface-a20: #3f3f3f;
+  --clr-surface-a30: #575757;
+  --clr-surface-a40: #717171;
+  --clr-surface-a50: #8b8b8b;
+
+  /** Theme tonal surface colors */
+  --clr-surface-tonal-a0: #192417;
+  --clr-surface-tonal-a10: #2e392c;
+  --clr-surface-tonal-a20: #454e43;
+  --clr-surface-tonal-a30: #5d655b;
+  --clr-surface-tonal-a40: #767d74;
+  --clr-surface-tonal-a50: #90968e;
+
+  /** Success colors */
+  --clr-success-a0: #22946e;
+  --clr-success-a10: #47d5a6;
+  --clr-success-a20: #9ae8ce;
+
+  /** Warning colors */
+  --clr-warning-a0: #a87a2a;
+  --clr-warning-a10: #d7ac61;
+  --clr-warning-a20: #ecd7b2;
+
+  /** Danger colors */
+  --clr-danger-a0: #9c2121;
+  --clr-danger-a10: #d94a4a;
+  --clr-danger-a20: #eb9e9e;
+
+  /** Info colors */
+  --clr-info-a0: #21498a;
+  --clr-info-a10: #4077d1;
+  --clr-info-a20: #92b2e5;
+}
+
+body {
+  background-color: var(--clr-surface-a0);
+  width: min(500px, 92vw);
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  width: 100%;
+  background-color: var(--clr-surface-a10);
+  color: var(--clr-light-a0);
+  border: 1px solid #d9ead9;
+  border-radius: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+main > label {
+  display: block;
+  width: 100%;
+}
+
+#search {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #d9ead9;
+  border-radius: 8px;
+  background-color: var(--clr-surface-a20);
+  color: var(--clr-light-a0);
+  font-size: 16px;
+}
+
+.task {
+  display: grid;
+  grid-template-columns: 56px 1.6fr 1fr 1fr;
+  align-items: center;
+  column-gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #d9ead9;
+  border-radius: 8px;
+  background-color: var(--clr-surface-a20);
+  color: var(--clr-light-a0);
+  font-size: 16px;
+}
+
+.task mark {
+  background-color: var(--clr-warning-a10);
+  color: var(--clr-dark-a0);
+  padding: 0 2px;
+  border-radius: 3px;
+}
+
+.task.done {
+  background-color: var(--clr-surface-a30);
+  border-color: var(--clr-surface-a40);
+  color: var(--clr-surface-a50);
+  opacity: 0.8;
+}
+
+.task.done > label {
+  text-decoration: line-through;
+  color: var(--clr-surface-a50);
+}
+
+.task.done > span {
+  color: var(--clr-surface-a50);
+}
+
+.task > input[type="checkbox"] {
+  justify-self: center;
+}
+
+.task > label,
+.task > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task .editable {
+  cursor: pointer;
+}
+
+.task .editable:hover {
+  text-decoration: underline dotted;
+}
+
+.task .inlineEditor {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid var(--clr-primary-a20);
+  border-radius: 6px;
+  background-color: var(--clr-surface-a10);
+  color: var(--clr-light-a0);
+  font-size: 16px;
+}
+
+.task .inlineEditor:focus {
+  border-color: var(--clr-info-a10);
+  outline: 2px solid var(--clr-info-a20);
+  outline-offset: 1px;
+}
+
+.task .inlineEditor::selection {
+  background-color: var(--clr-info-a10);
+  color: var(--clr-light-a0);
+}
+
+.task .inlineEditor[type="date"] {
+  color-scheme: dark;
+}
+
+.task .inlineEditor[type="date"]:focus,
+.task .inlineEditor[type="date"]:focus-visible {
+  border-color: var(--clr-info-a10);
+  outline: 2px solid var(--clr-info-a20);
+  outline-offset: 1px;
+}
+
+.task .inlineEditor[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.85);
+  cursor: pointer;
+}
+
+.task button {
+  margin-left: 0;
+  justify-self: stretch;
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--clr-danger-a10);
+  border-radius: 8px;
+  background-color: var(--clr-danger-a0);
+  color: var(--clr-light-a0);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.task button:hover {
+  background-color: var(--clr-danger-a10);
+}
+
+.task button:active {
+  background-color: var(--clr-danger-a20);
+  color: var(--clr-dark-a0);
+}
+
+#tasks {
+  margin: 25px 0;
+}
+
+.addTask {
+  width: 100%;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.addTask > label {
+  display: block;
+}
+
+.addTask > label:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.addTask > label:first-child #taskInput {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#taskInput {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--clr-surface-tonal-a30);
+  border-radius: 8px;
+  background-color: var(--clr-surface-a20);
+  color: var(--clr-light-a0);
+  font-size: 16px;
+}
+
+#dateInput {
+  padding: 10px;
+  border: 1px solid var(--clr-surface-tonal-a30);
+  border-radius: 8px;
+  background-color: var(--clr-surface-a20);
+  color: var(--clr-light-a0);
+  font-size: 16px;
+}
+
+.addTask button {
+  padding: 10px 14px;
+  border: 1px solid var(--clr-primary-a10);
+  border-radius: 8px;
+  background-color: var(--clr-primary-a0);
+  color: var(--clr-dark-a0);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.addTask button:hover {
+  background-color: var(--clr-primary-a10);
+}
+
+.addTask button:active {
+  background-color: var(--clr-primary-a20);
+}
+
+#taskInput::placeholder {
+  color: var(--clr-surface-tonal-a50);
+}
