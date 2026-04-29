@@ -1,0 +1,379 @@
+:root {
+  /** Theme primary colors */
+  --clr-primary-a0: #e02456;
+  --clr-primary-a10: #e74666;
+  --clr-primary-a20: #ec6076;
+  --clr-primary-a30: #f27686;
+  --clr-primary-a40: #f68b97;
+  --clr-primary-a50: #fa9fa8;
+
+  /** Theme surface colors */
+  --clr-surface-a0: #121212;
+  --clr-surface-a10: #252525;
+  --clr-surface-a20: #393939;
+  --clr-surface-a30: #4f4f4f;
+  --clr-surface-a40: #666;
+  --clr-surface-a50: #7d7d7d;
+
+  /** Theme tonal surface colors */
+  --clr-surface-tonal-a0: #251718;
+  --clr-surface-tonal-a10: #382a2b;
+  --clr-surface-tonal-a20: #4b3e3f;
+  --clr-surface-tonal-a30: #605454;
+  --clr-surface-tonal-a40: #756a6a;
+  --clr-surface-tonal-a50: #8a8181;
+
+  /** Success colors */
+  --clr-success-a0: #22946e;
+  --clr-success-a10: #5ba989;
+  --clr-success-a20: #86bfa6;
+
+  /** Warning colors */
+  --clr-warning-a0: #a87a2a;
+  --clr-warning-a10: #ba945a;
+  --clr-warning-a20: #cbae84;
+
+  /** Danger colors */
+  --clr-danger-a0: #9c2121;
+  --clr-danger-a10: #b4544c;
+  --clr-danger-a20: #ca7f77;
+
+  /** Info colors */
+  --clr-info-a0: #21498a;
+  --clr-info-a10: #4b6ca2;
+  --clr-info-a20: #7590ba;
+
+  /** Glassmorphism tokens */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --glass-blur: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--clr-surface-a0);
+  transition: background 0.5s ease;
+  background-attachment: fixed;
+}
+
+body, body.bg-default {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(224, 36, 86, 0.18), transparent 35%),
+    radial-gradient(circle at 80% 10%, rgba(117, 144, 186, 0.2), transparent 30%),
+    var(--clr-surface-a0);
+}
+
+body.bg-clear {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 170, 50, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(50, 150, 255, 0.2), transparent 40%),
+    var(--clr-surface-a0);
+}
+
+body.bg-clouds {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(150, 160, 180, 0.15), transparent 40%),
+    radial-gradient(circle at 75% 40%, rgba(100, 110, 130, 0.2), transparent 40%),
+    var(--clr-surface-a0);
+}
+
+body.bg-rain {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(50, 100, 200, 0.2), transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(30, 60, 120, 0.25), transparent 50%),
+    var(--clr-surface-a0);
+}
+
+body.bg-snow {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(200, 230, 255, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(150, 200, 255, 0.2), transparent 30%),
+    var(--clr-surface-a0);
+}
+
+body.bg-thunderstorm {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(100, 50, 150, 0.25), transparent 50%),
+    radial-gradient(circle at 80% 30%, rgba(180, 100, 220, 0.15), transparent 40%),
+    var(--clr-surface-a0);
+}
+
+body.bg-fog {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(120, 120, 130, 0.15), transparent 60%),
+    var(--clr-surface-a0);
+}
+
+input {
+  width: 200px;
+  height: 40px;
+  background-color: var(--clr-surface-a10);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+}
+
+button {
+  width: 100px;
+  height: 40px;
+  background-color: var(--clr-primary-a0);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+}
+
+button:hover {
+  background-color: var(--clr-primary-a20);
+}
+
+button:active {
+  background-color: var(--clr-primary-a30);
+}
+
+.weatherCard {
+  width: 90%;
+  max-width: 450px;
+  height: auto;
+  min-height: 200px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(140%);
+  margin: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.weatherCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.4);
+}
+
+#current {
+  height: auto;
+  width: 95%;
+  max-width: 520px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.card-header .location {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.card-header .datetime {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 12px;
+  flex: 1;
+}
+
+.card-body .weather-icon {
+  width: 70px;
+  height: 70px;
+  filter: drop-shadow(0 2px 8px rgba(224, 36, 86, 0.2));
+  flex-shrink: 0;
+}
+
+.card-body .temp-main {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, var(--clr-primary-a0), var(--clr-primary-a20));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.temp-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.temp-section .temp-feels {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.card-footer {
+  display: flex;
+  gap: 6px;
+  justify-content: space-around;
+  padding: 6px 8px 4px;
+  border-top: 1px solid var(--glass-border);
+}
+
+.card-details {
+  display: flex;
+  gap: 6px;
+  justify-content: space-around;
+  padding: 4px 8px 8px;
+}
+
+.info-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  flex: 1;
+  text-align: center;
+}
+
+.info-chip .label {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.info-chip .value {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.forecast-day {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+.forecast-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 8px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.forecast-header .forecast-day {
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+}
+
+.forecast-date {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.forecast-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.forecast-main img {
+  width: 50px;
+  height: 50px;
+}
+
+.main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.main-temp {
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--clr-primary-a0), var(--clr-primary-a20));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.main-desc {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.forecast-times {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  padding: 8px;
+  justify-content: center;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.time-entry {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  font-size: 0.7rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.time-entry img {
+  width: 35px;
+  height: 35px;
+}
+
+.time-entry .time-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.time-entry .time-temp {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+
