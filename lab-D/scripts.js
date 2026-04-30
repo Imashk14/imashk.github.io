@@ -12,6 +12,7 @@ document.getElementById("search").addEventListener("click", function() {
   xhr.onload = function() {
     if (xhr.status >= 200 && xhr.status < 300) {
       let weatherData = JSON.parse(xhr.responseText);
+      console.log(weatherData);
 
       let currentWeather = document.getElementById("current");
       let cityTime = new Date((weatherData.dt + weatherData.timezone) * 1000);
@@ -97,6 +98,7 @@ document.getElementById("search").addEventListener("click", function() {
     .then(res => res.json())
     .then(data => {
       if (data.cod !== "200") return;
+      console.log(data);
 
       const tz = data.city.timezone;
       let dailyForecasts = {};
