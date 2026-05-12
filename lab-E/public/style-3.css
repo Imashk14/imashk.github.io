@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inconsolata:wght@400;700&display=swap');
+
+:root {
+    --bg-color: #050510;
+    --text-main: #00ff41;
+    --text-dim: #00aa2b;
+    --accent: #ff0055;
+    --grid-color: rgba(0, 255, 65, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 1.5rem;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inconsolata', monospace;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    background-image:
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 30px 30px;
+    text-shadow: 0 0 5px var(--text-main);
+}
+
+/* Add a vintage CRT scanline effect */
+body::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 999;
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header, footer {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    border: 2px dashed var(--text-main);
+    padding: 1rem;
+    background-color: rgba(0, 255, 65, 0.05);
+}
+
+header { margin-bottom: 2rem; }
+footer { margin-top: 2rem; border-top: 2px solid var(--text-main); }
+
+h1, h2, h3, dt {
+    font-family: 'Fira Code', monospace;
+    color: var(--accent);
+    text-shadow: 0 0 8px var(--accent);
+    text-transform: uppercase;
+}
+
+h1 { font-size: 2.5rem; margin: 0; letter-spacing: 2px; }
+h2 { font-size: 1.8rem; border-bottom: 1px solid var(--accent); padding-bottom: 0.2rem; }
+h3 { font-size: 1.4rem; color: var(--text-dim); border-left: 5px solid var(--text-dim); padding-left: 10px; }
+
+article {
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    border: 1px solid var(--text-dim);
+    box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.1);
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.planet-image, .moon-image {
+    width: 100%;
+    max-width: 350px;
+    display: block;
+    margin: 1rem auto;
+    filter: grayscale(100%) contrast(1.5) sepia(100%) hue-rotate(80deg);
+    border: 2px solid var(--text-main);
+    padding: 4px;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.moon-entry {
+    border: 1px dashed var(--text-dim);
+    padding: 1rem;
+}
+
+dt::before {
+    content: "> ";
+    color: var(--text-main);
+}
+
+/* Themed Navigation Buttons */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.style-button {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--text-main);
+    font-family: 'Fira Code', monospace;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.2), inset 0 0 10px rgba(0, 255, 65, 0.1);
+    transition: all 0.1s;
+}
+
+.style-button::before {
+    content: "> ";
+}
+
+.style-button:hover {
+    background: var(--text-main);
+    color: var(--bg-color);
+    text-shadow: none;
+    box-shadow: 0 0 20px var(--text-main);
+}
+
+.style-button:active {
+    transform: scale(0.95);
+}
