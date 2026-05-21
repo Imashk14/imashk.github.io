@@ -2,19 +2,19 @@
 
 class JsonEncoder implements EncoderInterface
 {
-
-    public function supports()
+    public function supports(string $format): bool
     {
-        // TODO: Implement supports() method.
+        return $format === 'json';
     }
 
-    public function encode($data)
+    public function decode(string $data): array
     {
-        // TODO: Implement encode() method.
+        $decoded = json_decode($data, true);
+        return is_array($decoded) ? $decoded : [];
     }
 
-    public function decode($data)
+    public function encode(array $data): string
     {
-        // TODO: Implement decode() method.
+        return json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) ?: '';
     }
 }

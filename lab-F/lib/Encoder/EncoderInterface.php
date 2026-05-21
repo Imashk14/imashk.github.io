@@ -2,7 +2,7 @@
 
 interface EncoderInterface
 {
-    public function supports();
-    public function encode($data);
-    public function decode($data);
+    public function supports(string $format): bool;
+    public function decode(string $data): array;
+    public function encode(array $data): string;
 }

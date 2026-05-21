@@ -2,19 +2,25 @@
 
 class YamlEncoder implements EncoderInterface
 {
-
-    public function supports()
+    public function supports(string $format): bool
     {
-        // TODO: Implement supports() method.
+        return $format === 'yaml';
     }
 
-    public function encode($data)
+    public function decode(string $data): array
     {
-        // TODO: Implement encode() method.
+        if (!extension_loaded('yaml')) {
+            throw new RuntimeException("YAML extension not loaded.");
+        }
+        $decoded = yaml_parse($data);
+        return is_array($decoded) ? $decoded : [];
     }
 
-    public function decode($data)
+    public function encode(array $data): string
     {
-        // TODO: Implement decode() method.
+        if (!extension_loaded('yaml')) {
+            throw new RuntimeException("YAML extension not loaded.");
+        }
+        return yaml_emit($data);
     }
 }

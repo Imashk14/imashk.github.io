@@ -1,14 +1,14 @@
 <?php
 spl_autoload_register(function(string $class): void {
-    $prefix = 'App\\';
-    $baseDir = __DIR__.'/lib/';
+    $paths = [
+        __DIR__ . '/lib/' . $class . '.php',
+        __DIR__ . '/lib/Encoder/' . $class . '.php',
+    ];
 
-    if (0 === strpos($class, $prefix)) {
-        $relative = substr($class, strlen($prefix));
-        $file = $baseDir.str_replace('\\', '/', $relative).'.php';
-
+    foreach ($paths as $file) {
         if (file_exists($file)) {
             require $file;
+            return;
         }
     }
 });

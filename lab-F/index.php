@@ -1,17 +1,25 @@
 <?php
 require_once __DIR__ . '/autoload.php';
 
-$inputType = $_POST['inputType'] ?? '';
-setcookie('inputType', $inputType, time() + 3600);
-
-$inputText = $_POST['inputText'] ?? '';
-setcookie('inputText', $inputText, time() + 3600);
-
-$outputType = $_POST['outputType'] ?? '';
-setcookie('outputType', $outputType, time() + 3600);
-
+$inputType = $_POST['inputType'] ?? $_COOKIE['inputType'] ?? 'csv';
+$inputText = $_POST['inputText'] ?? $_COOKIE['inputText'] ?? '';
+$outputType = $_POST['outputType'] ?? $_COOKIE['outputType'] ?? 'csv';
 $outputText = '';
-setcookie('outputText', $outputText, time() + 3600);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    setcookie('inputType', $inputType, time() + 3600);
+    setcookie('inputText', $inputText, time() + 3600);
+    setcookie('outputType', $outputType, time() + 3600);
+
+    if (trim($inputText) !== '') {
+        try {
+            $serializer = new Serializer();
+            $outputText = $serializer->convert($inputText, $inputType, $outputType);
+        } catch (Throwable $e) {
+            $outputText = 'Error: ' . $e->getMessage();
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +63,7 @@ setcookie('outputText', $outputText, time() + 3600);
             </select>
 
             <label for="outputText">Output text</label>
-            <textarea id="outputText" name="outputText" readonly placeholder="Your converted data will appear here..."><?php echo htmlspecialchars($outputText); ?></textarea>
+            <pre id="outputText"><?php echo $outputText; ?></pre>
         </section>
     </form>
 </main>
