@@ -6,7 +6,7 @@ $inputText = $_POST['inputText'] ?? $_COOKIE['inputText'] ?? '';
 $outputType = $_POST['outputType'] ?? $_COOKIE['outputType'] ?? 'csv';
 $outputText = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['convertTask'])) {
     setcookie('inputType', $inputType, time() + 3600);
     setcookie('inputText', $inputText, time() + 3600);
     setcookie('outputType', $outputType, time() + 3600);
@@ -18,7 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch (Throwable $e) {
             $outputText = 'Error: ' . $e->getMessage();
         }
+        setcookie('outputText', $outputText, time() + 3600);
+    } else {
+        setcookie('outputText', '', time() + 3600);
     }
+} else {
+    $outputText = $_COOKIE['outputText'] ?? '';
 }
 ?>
 
@@ -47,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="inputText">Input text</label>
             <textarea id="inputText" name="inputText" placeholder="Paste your data here..."><?php echo htmlspecialchars($inputText); ?></textarea>
 
-            <input class="submit-btn" type="submit" value="Convert">
+            <input class="submit-btn" name="convertTask" type="submit" value="Convert">
         </section>
 
         <section class="panel panel-right">
