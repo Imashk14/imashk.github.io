@@ -6,32 +6,34 @@
     <div class="container">
         <h1>Car</h1>
 
-        <table class="table">
-            <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ car.id }}</td>
-            </tr>
-            <tr>
-                <th>Manufacturer</th>
-                <td>{{ car.manufacturer }}</td>
-            </tr>
-            <tr>
-                <th>Model</th>
-                <td>{{ car.model }}</td>
-            </tr>
-            <tr>
-                <th>Color</th>
-                <td>{{ car.color }}</td>
-            </tr>
-            <tr>
-                <th>Year</th>
-                <td>{{ car.year }}</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ car.id }}</td>
+                </tr>
+                <tr>
+                    <th>Manufacturer</th>
+                    <td>{{ car.manufacturer }}</td>
+                </tr>
+                <tr>
+                    <th>Model</th>
+                    <td>{{ car.model }}</td>
+                </tr>
+                <tr>
+                    <th>Color</th>
+                    <td>{{ car.color }}</td>
+                </tr>
+                <tr>
+                    <th>Year</th>
+                    <td>{{ car.year }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <div class="d-flex flex-wrap align-items-center gap-2">
+        <div class="d-flex flex-wrap align-items-center gap-2 gap-sm-3 mt-3">
             <a class="btn btn-outline-secondary" href="{{ path('app_car_index') }}">Back to list</a>
             <a class="btn btn-outline-primary" href="{{ path('app_car_edit', {'id': car.id}) }}">Edit</a>
             {{ include('car/_delete_form.html.twig') }}

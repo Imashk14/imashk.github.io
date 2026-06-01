@@ -1,4 +1,25 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="row g-3">
+    <div class="col-12 col-md-6">
+        {{ form_label(form.manufacturer) }}
+        {{ form_widget(form.manufacturer, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.manufacturer) }}
+    </div>
+
+    <div class="col-12 col-md-6">
+        {{ form_label(form.model) }}
+        {{ form_widget(form.model, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.model) }}
+    </div>
+
+    <div class="col-12 col-md-6">
+        {{ form_label(form.color) }}
+        {{ form_widget(form.color, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.color) }}
+    </div>
+
+    <div class="col-12 col-md-6">
+        {{ form_label(form.year) }}
+        {{ form_widget(form.year, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.year) }}
+    </div>
+</div>
