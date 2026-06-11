@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% set title = (car.manufacturer if car else '') ~ ' ' ~ (car.model if car else '') ~ ' (' ~ (car.id if car else '') ~ ')' %}
+{% set bodyClass = 'show' %}
+
+{% block content %}
+    <h1>{{ car.manufacturer }} {{ car.model }}</h1>
+    <article>
+        <p><strong>Color:</strong> {{ car.color }}</p>
+        <p><strong>Year:</strong> {{ car.year }}</p>
+    </article>
+
+    <ul class="action-list">
+        <li> <a href="{{ url_for('car.index') }}">Back to list</a></li>
+        <li><a href="{{ url_for('car.edit', id=car.id) }}">Edit</a></li>
+    </ul>
+{% endblock %}
