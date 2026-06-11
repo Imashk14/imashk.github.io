@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% set title = 'Create Car' %}
+{% set bodyClass = 'edit' %}
+
+{% block content %}
+	<h1>Create Car</h1>
+	<form action="{{ url_for('car.create') }}" method="post" class="edit-form">
+		{% include 'car/_form.html' %}
+		<input type="hidden" name="action" value="car-create">
+	</form>
+
+	<a href="{{ url_for('car.index') }}">Back to list</a>
+{% endblock %}

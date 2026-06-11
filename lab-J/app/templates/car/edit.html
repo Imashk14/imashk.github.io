@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% set title = 'Edit Car ' ~ (car.manufacturer if car else '') ~ ' ' ~ (car.model if car else '') ~ ' (' ~ (car.id if car else '') ~ ')' %}
+{% set bodyClass = 'edit' %}
+
+{% block content %}
+	<h1>{{ title }}</h1>
+	<form action="{{ url_for('car.edit', id=car.id) }}" method="post" class="edit-form">
+		{% include 'car/_form.html' %}
+		<input type="hidden" name="action" value="car-edit">
+		<input type="hidden" name="id" value="{{ car.id }}">
+	</form>
+
+	<ul class="action-list">
+		<li>
+			<a href="{{ url_for('car.index') }}">Back to list</a></li>
+		<li>
+			<form action="{{ url_for('car.delete') }}" method="post">
+				<input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+				<input type="hidden" name="action" value="car-delete">
+				<input type="hidden" name="id" value="{{ car.id }}">
+			</form>
+		</li>
+	</ul>
+{% endblock %}
