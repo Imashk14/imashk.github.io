@@ -3,3 +3,4 @@
 *.odt
 *.docx#
 .idea/
+*.pyc
