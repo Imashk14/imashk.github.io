@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Car</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="edit">
+    <nav>
+      <ul>
+        <li><a href='/'>Home</a></li>
+        <li><a href='/cars'>Cars</a></li>
+      </ul>
+    </nav>
+    <main>
+      <h1>Edit Car <%= car.manufacturer %> <%= car.model %> (<%= car.id %>)</h1>
+      <%- include('_form', { action: '/cars/' + car.id, car: car }) %>
+
+      <ul class="action-list">
+        <li><a href='/cars'>Back to list</a></li>
+        <li>
+          <form action='/cars/<%= car.id %>/delete' method='post'>
+            <input type='submit' value='Delete' onclick='return confirm("Are you sure?")'>
+          </form>
+        </li>
+      </ul>
+    </main>
+    <footer>&copy;2026 Custom Framework</footer>
+  </body>
+</html>
